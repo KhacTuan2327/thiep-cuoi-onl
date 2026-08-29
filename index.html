@@ -1,0 +1,231 @@
+﻿<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thiệp cưới — Khắc Tuấn & Duyên Anh</title>
+  <meta name="description" content="Thiệp cưới online của Khắc Tuấn và Duyên Anh" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="wedding-invitation.css" />
+</head>
+<body>
+  <div class="page-glow page-glow-one"></div>
+  <div class="page-glow page-glow-two"></div>
+
+  <main class="page-shell">
+    <header class="hero" id="top">
+      <div class="hero-overlay"></div>
+      <nav class="topbar">
+        <div class="brand">Khắc Tuấn <span>&amp;</span> Duyên Anh</div>
+        <div class="nav-actions">
+          <div class="nav-links">
+            <a href="#story">Câu chuyện</a>
+            <a href="#event">Sự kiện</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#rsvp">RSVP</a>
+          </div>
+          <button id="musicToggle" class="music-toggle" type="button" aria-label="Bật nhạc nền">♫</button>
+        </div>
+      </nav>
+
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Trân trọng kính mời</p>
+          <h1 class="names">Khắc Tuấn <span>&amp;</span> Duyên Anh</h1>
+          <p class="quote">“Mỗi ngày với nhau là một câu chuyện đẹp, và chúng tôi rất muốn chia sẻ khoảnh khắc quan trọng này với bạn.”</p>
+          <div class="hero-meta">
+            <span id="heroDate">16/11/2026</span>
+            <span class="dot">•</span>
+            <span id="heroPlace">Đang cập nhật địa điểm</span>
+          </div>
+          <div class="hero-actions">
+            <a href="#story" class="btn primary">Mở thiệp</a>
+            <a href="#rsvp" class="btn secondary">RSVP</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="photo-frame">
+            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1000&q=80" alt="Khắc Tuấn và Duyên Anh" />
+            <div class="photo-badge">
+              <span>Save the date</span>
+              <strong id="heroBadgeDate">16/11/2026</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="content" id="story">
+      <section class="card story reveal">
+        <div class="section-head">
+          <p class="eyebrow">Câu chuyện</p>
+          <h2>Hai trái tim tìm thấy nhau</h2>
+        </div>
+        <div class="story-grid">
+          <article class="story-card">
+            <span class="tag">Nhà trai</span>
+            <h3>Khắc Tuấn</h3>
+            <p>Con trai của ông <strong>Trịnh Khắc Đại</strong> và bà <strong>Phan Thị Tâm</strong>.</p>
+            <p>Địa chỉ: Thôn Phong Lai, xã Xuân Lập, tỉnh Thanh Hoá.</p>
+          </article>
+          <article class="story-card accent">
+            <span class="tag">Nhà gái</span>
+            <h3>Duyên Anh</h3>
+            <p>Con gái của ông <strong>Đỗ Hữu Tình</strong> và bà <strong>Đỗ Thị Hiền</strong>.</p>
+            <p>Địa chỉ: Thôn Trung Lập, xã Xuân Lập, tỉnh Thanh Hoá.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card reveal timeline">
+        <div class="section-head">
+          <p class="eyebrow">Hành trình</p>
+          <h2>Những khoảnh khắc đáng nhớ</h2>
+        </div>
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <span class="dot"></span>
+            <div>
+              <strong>Lễ Nạp tài</strong>
+              <p>9h30 thứ Bảy, ngày 14/11/2026 (tức ngày 6 tháng 10 năm Bính Ngọ).</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="dot"></span>
+            <div>
+              <strong>Lễ Thành hôn</strong>
+              <p>11h thứ Hai, ngày 16/11/2026 (tức ngày 8 tháng 10 năm Bính Ngọ).</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="dot"></span>
+            <div>
+              <strong>Chúng tôi</strong>
+              <p>Với niềm tin và sự yêu thương, chúng tôi rất mong được đón tiếp mọi người trong ngày trọng đại của gia đình.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card reveal countdown-card" id="event">
+        <div class="section-head compact">
+          <p class="eyebrow">Lời nhắc</p>
+          <h2>Đếm ngược đến ngày trọng đại</h2>
+        </div>
+
+        <p id="countdownMessage" class="countdown-message">Chúng tôi đang rất mong chờ ngày này.</p>
+        <div class="timer" id="countdown">
+          <div class="timepart"><span id="days">0</span><small>Ngày</small></div>
+          <div class="timepart"><span id="hours">0</span><small>Giờ</small></div>
+          <div class="timepart"><span id="minutes">0</span><small>Phút</small></div>
+          <div class="timepart"><span id="seconds">0</span><small>Giây</small></div>
+        </div>
+
+        <div class="event-grid">
+          <div class="event-box">
+            <span class="event-label">Lễ Nạp tài</span>
+            <strong id="eventDate">9h30, 14/11/2026</strong>
+          </div>
+          <div class="event-box">
+            <span class="event-label">Lễ Thành hôn</span>
+            <strong id="eventTime">11:00, 16/11/2026</strong>
+          </div>
+          <div class="event-box">
+            <span class="event-label">Địa điểm</span>
+            <strong id="eventPlace">Đang cập nhật địa điểm</strong>
+          </div>
+        </div>
+
+        <div class="set-date">
+          <input type="datetime-local" id="eventDateTimeInput" value="2026-11-16T11:00" />
+          <button id="saveDateBtn" class="btn primary small">Lưu ngày</button>
+          <button id="setNow" class="btn secondary small">Đặt ngay</button>
+        </div>
+
+        <div class="controls">
+          <button id="editDetails" class="btn secondary small">Chỉnh sửa địa điểm</button>
+        </div>
+      </section>
+
+      <section class="card reveal gallery" id="gallery">
+        <div class="section-head">
+          <p class="eyebrow">Gallery</p>
+          <h2>Những khoảnh khắc của chúng tôi</h2>
+        </div>
+        <div class="photo-grid">
+          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80" alt="Ảnh 1" />
+          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80" alt="Ảnh 2" />
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Ảnh 3" />
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80" alt="Ảnh 4" />
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Ảnh 5" />
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Ảnh 6" />
+        </div>
+      </section>
+
+      <section class="card reveal rsvp-wrap" id="rsvp">
+        <div class="rsvp-copy">
+          <div class="section-head">
+            <p class="eyebrow">RSVP</p>
+            <h2>Tham dự cùng chúng tôi</h2>
+          </div>
+          <p>Chúng tôi rất mong được đón tiếp bạn trong ngày trọng đại của gia đình. Hãy gửi lời chúc và xác nhận sự hiện diện của bạn.</p>
+        </div>
+
+        <form id="rsvpForm" class="rsvp-form">
+          <label>
+            <span>Tên của bạn</span>
+            <input type="text" id="rsvpName" placeholder="Ví dụ: Nguyễn Văn A" required />
+          </label>
+          <label>
+            <span>Email (tùy chọn)</span>
+            <input type="email" id="rsvpEmail" placeholder="you@example.com" />
+          </label>
+          <label>
+            <span>Lời chúc</span>
+            <textarea id="rsvpMessage" placeholder="Cùng chúc mừng đôi uyên ương..."></textarea>
+          </label>
+          <button type="submit" class="btn primary">Gửi lời chúc</button>
+        </form>
+
+        <div id="rsvpList" class="rsvp-list"></div>
+      </section>
+
+      <section class="card reveal gift-box">
+        <div class="section-head">
+          <p class="eyebrow">Lời cảm ơn</p>
+          <h2>Quà cưới</h2>
+        </div>
+        <p>Nếu bạn muốn gửi lời chúc hoặc quà mừng, chúng tôi rất trân trọng. Mọi sự hiện diện của bạn đều là món quà ý nghĩa nhất.</p>
+        <div class="gift-grid">
+          <div class="gift-item">
+            <span>Ngân hàng</span>
+            <strong>Vietcombank</strong>
+          </div>
+          <div class="gift-item">
+            <span>Chủ tài khoản</span>
+            <strong>Khắc Tuấn</strong>
+          </div>
+          <div class="gift-item">
+            <span>Số tài khoản</span>
+            <strong>1234 5678 9012</strong>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>Rất hân hạnh được đón tiếp bạn trong ngày trọng đại của chúng tôi.</p>
+        <p class="small">Khắc Tuấn &amp; Duyên Anh</p>
+      </footer>
+    </section>
+  </main>
+
+  <audio id="weddingMusic" preload="auto" aria-label="Nhạc nền thiệp cưới">
+    <source src="./ordinary-clip.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="wedding-invitation.js"></script>
+</body>
+</html>
