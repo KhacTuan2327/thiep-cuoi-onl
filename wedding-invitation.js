@@ -242,7 +242,7 @@
 
     setMusicState(false);
 
-    const autoPlayMusic = async function () {
+    const startMusicFromUserGesture = async function () {
       try {
         if (weddingMusic.currentTime < CLIP_START || weddingMusic.currentTime >= weddingMusic.duration - 0.15) {
           weddingMusic.currentTime = CLIP_START;
@@ -260,10 +260,17 @@
       }
     };
 
+    const openInvitationBtn = document.getElementById('openInvitationBtn');
+    if (openInvitationBtn) {
+      openInvitationBtn.addEventListener('click', async function () {
+        await startMusicFromUserGesture();
+      });
+    }
+
     musicToggle.addEventListener('click', async function () {
       try {
         if (weddingMusic.paused) {
-          await autoPlayMusic();
+          await startMusicFromUserGesture();
         } else {
           weddingMusic.pause();
           stopFallbackAudio();
@@ -273,10 +280,6 @@
         setMusicState(false);
       }
     });
-
-    window.addEventListener('load', function () {
-      setTimeout(autoPlayMusic, 500);
-    }, { once: true });
   }
 
   function init() {
