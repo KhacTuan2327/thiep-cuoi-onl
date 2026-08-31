@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="wedding-invitation.css" />
 </head>
-<body>
+<body class="page-closed">
   <div class="page-glow page-glow-one"></div>
   <div class="page-glow page-glow-two"></div>
 
@@ -32,14 +32,22 @@
 
       <div class="hero-inner">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Trân trọng kính mời</p>
-          <h1 class="names">Khắc Tuấn <span>&amp;</span> Duyên Anh</h1>
+          <div class="hero-topline" style="display:flex;align-items:center;gap:12px;">
+            <div class="names-small" style="font-weight:700;color:rgba(255,255,255,0.95);">Khắc Tuấn &amp; Duyên Anh</div>
+            <div class="music-icon" aria-hidden="true" style="font-size:1.05rem;color:rgba(255,255,255,0.92);">♫</div>
+          </div>
+          <p class="eyebrow" style="margin-top:12px;">Trân trọng kính mời</p>
+
+          <h1 class="names display">Khắc Tuấn <span>&amp;</span> Duyên Anh</h1>
+
           <p class="quote">“Mỗi ngày với nhau là một câu chuyện đẹp, và chúng tôi rất muốn chia sẻ khoảnh khắc quan trọng này với bạn.”</p>
-          <div class="hero-meta">
-            <span id="heroDate">16/11/2026</span>
+
+          <div class="hero-meta" style="margin-top:18px;">
+            <span id="heroDate">07/08/2026</span>
             <span class="dot">•</span>
             <span id="heroPlace">Đang cập nhật địa điểm</span>
           </div>
+
           <div class="hero-actions">
             <button id="openInvitationBtn" class="btn primary" type="button" aria-controls="story" aria-expanded="false">Mở thiệp</button>
             <a href="#rsvp" class="btn secondary">RSVP</a>
@@ -51,7 +59,7 @@
             <img fetchpriority="high" decoding="async" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1000&q=80" alt="Khắc Tuấn và Duyên Anh" />
             <div class="photo-badge">
               <span>Save the date</span>
-              <strong id="heroBadgeDate">16/11/2026</strong>
+              <strong id="heroBadgeDate">07/08/2026</strong>
             </div>
           </div>
         </div>
@@ -155,13 +163,13 @@
           <p class="eyebrow">Gallery</p>
           <h2>Những khoảnh khắc của chúng tôi</h2>
         </div>
-        <div class="photo-grid">
-          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80" alt="Ảnh 1" />
-          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80" alt="Ảnh 2" />
-          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Ảnh 3" />
-          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80" alt="Ảnh 4" />
-          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Ảnh 5" />
-          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Ảnh 6" />
+        <div class="photo-grid scrollable">
+          <div class="photo-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80" alt="Ảnh 1" /></div>
+          <div class="photo-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80" alt="Ảnh 2" /></div>
+          <div class="photo-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80" alt="Ảnh 3" /></div>
+          <div class="photo-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80" alt="Ảnh 4" /></div>
+          <div class="photo-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" alt="Ảnh 5" /></div>
+          <div class="photo-card"><img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80" alt="Ảnh 6" /></div>
         </div>
       </section>
 

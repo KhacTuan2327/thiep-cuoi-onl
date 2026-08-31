@@ -287,11 +287,35 @@
     if (openInvitationBtn) {
       openInvitationBtn.addEventListener('click', async function (event) {
         event.preventDefault();
-        const storySection = document.getElementById('story');
-        if (storySection) {
-          storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const isOpen = document.body.classList.contains('page-opened');
+        if (!isOpen) {
+          document.body.classList.remove('page-closed');
+          document.body.classList.add('page-opened');
+          openInvitationBtn.textContent = 'Đóng thiệp';
+          openInvitationBtn.setAttribute('aria-expanded', 'true');
+          try {
+            if (weddingMusic && weddingMusic.readyState === 0) weddingMusic.load();
+            await startMusicFromUserGesture();
+          } catch (err) {
+            startFallbackAudio();
+            setMusicState(false);
+          }
+          setTimeout(function () {
+            const storySection = document.getElementById('story');
+            if (storySection) storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 260);
+        } else {
+          document.body.classList.remove('page-opened');
+          document.body.classList.add('page-closed');
+          openInvitationBtn.textContent = 'Mở thiệp';
+          openInvitationBtn.setAttribute('aria-expanded', 'false');
+          if (weddingMusic && !weddingMusic.paused) {
+            weddingMusic.pause();
+            stopFallbackAudio();
+            setMusicState(false);
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        await startMusicFromUserGesture();
       });
     }
 

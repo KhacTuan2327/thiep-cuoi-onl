@@ -285,19 +285,39 @@
     if (openInvitationBtn) {
       openInvitationBtn.addEventListener('click', async function (event) {
         event.preventDefault();
-        const storySection = document.getElementById('story');
-        if (storySection) {
-          storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        try {
-          if (weddingMusic.readyState === 0) {
-            weddingMusic.load();
-          }
-          await startMusicFromUserGesture();
+        const isOpen = document.body.classList.contains('page-opened');
+        if (!isOpen) {
+          // Open the card: reveal content, play music
+          document.body.classList.remove('page-closed');
+          document.body.classList.add('page-opened');
+          openInvitationBtn.textContent = 'Đóng thiệp';
           openInvitationBtn.setAttribute('aria-expanded', 'true');
-        } catch (error) {
-          startFallbackAudio();
-          setMusicState(false);
+
+          try {
+            if (weddingMusic && weddingMusic.readyState === 0) weddingMusic.load();
+            await startMusicFromUserGesture();
+          } catch (err) {
+            startFallbackAudio();
+            setMusicState(false);
+          }
+
+          // smooth reveal scroll a bit after the animation starts
+          setTimeout(function () {
+            const storySection = document.getElementById('story');
+            if (storySection) storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 260);
+        } else {
+          // Close the card: hide content and pause music
+          document.body.classList.remove('page-opened');
+          document.body.classList.add('page-closed');
+          openInvitationBtn.textContent = 'Mở thiệp';
+          openInvitationBtn.setAttribute('aria-expanded', 'false');
+          if (weddingMusic && !weddingMusic.paused) {
+            weddingMusic.pause();
+            stopFallbackAudio();
+            setMusicState(false);
+          }
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });
     }
