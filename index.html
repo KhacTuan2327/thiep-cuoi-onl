@@ -7,7 +7,7 @@
   <meta name="description" content="Thiệp cưới online của Khắc Tuấn và Duyên Anh" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="wedding-invitation.css" />
 </head>
 <body>
@@ -41,14 +41,14 @@
             <span id="heroPlace">Đang cập nhật địa điểm</span>
           </div>
           <div class="hero-actions">
-            <a href="#story" id="openInvitationBtn" class="btn primary">Mở thiệp</a>
+            <button id="openInvitationBtn" class="btn primary" type="button" aria-controls="story" aria-expanded="false">Mở thiệp</button>
             <a href="#rsvp" class="btn secondary">RSVP</a>
           </div>
         </div>
 
         <div class="hero-visual reveal">
           <div class="photo-frame">
-            <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1000&q=80" alt="Khắc Tuấn và Duyên Anh" />
+            <img fetchpriority="high" decoding="async" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1000&q=80" alt="Khắc Tuấn và Duyên Anh" />
             <div class="photo-badge">
               <span>Save the date</span>
               <strong id="heroBadgeDate">16/11/2026</strong>
@@ -156,12 +156,12 @@
           <h2>Những khoảnh khắc của chúng tôi</h2>
         </div>
         <div class="photo-grid">
-          <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80" alt="Ảnh 1" />
-          <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80" alt="Ảnh 2" />
-          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Ảnh 3" />
-          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80" alt="Ảnh 4" />
-          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Ảnh 5" />
-          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Ảnh 6" />
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80" alt="Ảnh 1" />
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=80" alt="Ảnh 2" />
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Ảnh 3" />
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80" alt="Ảnh 4" />
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80" alt="Ảnh 5" />
+          <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Ảnh 6" />
         </div>
       </section>
 
@@ -222,10 +222,11 @@
     </section>
   </main>
 
-  <audio id="weddingMusic" preload="auto" aria-label="Nhạc nền thiệp cưới">
+  <audio id="weddingMusic" preload="auto" playsinline aria-label="Nhạc nền thiệp cưới">
     <source src="./ordinary-clip.mp3" type="audio/mpeg" />
   </audio>
 
   <script src="wedding-invitation.js"></script>
 </body>
 </html>
+

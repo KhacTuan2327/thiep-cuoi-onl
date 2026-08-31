@@ -148,6 +148,26 @@
     });
   }
 
+  function initMotion() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
+    const heroVisual = document.querySelector('.photo-frame');
+    if (!heroVisual) return;
+
+    const handlePointerMove = function (event) {
+      const offsetX = (event.clientX / window.innerWidth - 0.5) * 18;
+      const offsetY = (event.clientY / window.innerHeight - 0.5) * 18;
+      heroVisual.style.transform = `translate3d(${offsetX * 0.7}px, ${offsetY * 0.7}px, 0) rotate(${offsetX * 0.35}deg)`;
+    };
+
+    const handleLeave = function () {
+      heroVisual.style.transform = '';
+    };
+
+    document.addEventListener('pointermove', handlePointerMove);
+    heroVisual.addEventListener('pointerleave', handleLeave);
+  }
+
   function stopFallbackAudio() {
     if (!fallbackAudio) return;
     if (fallbackAudio.intervalId) {
@@ -242,8 +262,11 @@
 
     setMusicState(false);
 
-    const autoPlayMusic = async function () {
+    const startMusicFromUserGesture = async function () {
       try {
+        if (weddingMusic.readyState === 0) {
+          weddingMusic.load();
+        }
         if (weddingMusic.currentTime < CLIP_START || weddingMusic.currentTime >= weddingMusic.duration - 0.15) {
           weddingMusic.currentTime = CLIP_START;
         }
@@ -260,10 +283,22 @@
       }
     };
 
+    const openInvitationBtn = document.getElementById('openInvitationBtn');
+    if (openInvitationBtn) {
+      openInvitationBtn.addEventListener('click', async function (event) {
+        event.preventDefault();
+        const storySection = document.getElementById('story');
+        if (storySection) {
+          storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        await startMusicFromUserGesture();
+      });
+    }
+
     musicToggle.addEventListener('click', async function () {
       try {
         if (weddingMusic.paused) {
-          await autoPlayMusic();
+          await startMusicFromUserGesture();
         } else {
           weddingMusic.pause();
           stopFallbackAudio();
@@ -273,10 +308,6 @@
         setMusicState(false);
       }
     });
-
-    window.addEventListener('load', function () {
-      setTimeout(autoPlayMusic, 500);
-    }, { once: true });
   }
 
   function init() {
@@ -290,6 +321,7 @@
 
     if (store.rsvps) renderRsvps(store.rsvps);
     initReveal();
+    initMotion();
     bindMusic();
   }
 

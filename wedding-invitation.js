@@ -148,6 +148,26 @@
     });
   }
 
+  function initMotion() {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
+    const heroVisual = document.querySelector('.photo-frame');
+    if (!heroVisual) return;
+
+    const handlePointerMove = function (event) {
+      const offsetX = (event.clientX / window.innerWidth - 0.5) * 18;
+      const offsetY = (event.clientY / window.innerHeight - 0.5) * 18;
+      heroVisual.style.transform = `translate3d(${offsetX * 0.7}px, ${offsetY * 0.7}px, 0) rotate(${offsetX * 0.35}deg)`;
+    };
+
+    const handleLeave = function () {
+      heroVisual.style.transform = '';
+    };
+
+    document.addEventListener('pointermove', handlePointerMove);
+    heroVisual.addEventListener('pointerleave', handleLeave);
+  }
+
   function stopFallbackAudio() {
     if (!fallbackAudio) return;
     if (fallbackAudio.intervalId) {
@@ -211,6 +231,7 @@
     musicToggle.classList.toggle('is-muted', !isPlaying);
     musicToggle.textContent = isPlaying ? '❚❚' : '♫';
     musicToggle.setAttribute('aria-label', isPlaying ? 'Tắt nhạc nền' : 'Bật nhạc nền');
+    musicToggle.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
     weddingMusic.muted = !isPlaying;
   }
 
@@ -262,8 +283,22 @@
 
     const openInvitationBtn = document.getElementById('openInvitationBtn');
     if (openInvitationBtn) {
-      openInvitationBtn.addEventListener('click', async function () {
-        await startMusicFromUserGesture();
+      openInvitationBtn.addEventListener('click', async function (event) {
+        event.preventDefault();
+        const storySection = document.getElementById('story');
+        if (storySection) {
+          storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        try {
+          if (weddingMusic.readyState === 0) {
+            weddingMusic.load();
+          }
+          await startMusicFromUserGesture();
+          openInvitationBtn.setAttribute('aria-expanded', 'true');
+        } catch (error) {
+          startFallbackAudio();
+          setMusicState(false);
+        }
       });
     }
 
@@ -293,6 +328,7 @@
 
     if (store.rsvps) renderRsvps(store.rsvps);
     initReveal();
+    initMotion();
     bindMusic();
   }
 

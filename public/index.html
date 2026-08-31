@@ -7,7 +7,7 @@
   <meta name="description" content="Thiệp cưới online của Khắc Tuấn và Duyên Anh" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="wedding-invitation.css" />
 </head>
 <body>
@@ -41,7 +41,7 @@
             <span id="heroPlace">Đang cập nhật địa điểm</span>
           </div>
           <div class="hero-actions">
-            <a href="#story" class="btn primary">Mở thiệp</a>
+            <button id="openInvitationBtn" class="btn primary" type="button">Mở thiệp</button>
             <a href="#rsvp" class="btn secondary">RSVP</a>
           </div>
         </div>
@@ -222,10 +222,11 @@
     </section>
   </main>
 
-  <audio id="weddingMusic" preload="auto" aria-label="Nhạc nền thiệp cưới">
+  <audio id="weddingMusic" preload="auto" playsinline aria-label="Nhạc nền thiệp cưới">
     <source src="./ordinary-clip.mp3" type="audio/mpeg" />
   </audio>
 
   <script src="wedding-invitation.js"></script>
 </body>
 </html>
+
