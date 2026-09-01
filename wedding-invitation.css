@@ -1092,10 +1092,11 @@ button, input, textarea, select { font: inherit; }
   grid-template-columns: 140px 1fr;
   gap: 16px;
   align-items: center;
-  padding: 16px;
-  border-radius: 20px;
+  padding: 18px;
+  border-radius: 24px;
   background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(247,239,234,0.88));
-  border: 1px solid var(--line);
+  border: 1px solid rgba(67, 48, 40, 0.08);
+  box-shadow: 0 18px 36px rgba(72, 49, 39, 0.05);
 }
 
 .gift-qr {
@@ -1104,14 +1105,24 @@ button, input, textarea, select { font: inherit; }
   width: 140px;
   height: 140px;
   border-radius: 18px;
-  background:
-    linear-gradient(90deg, rgba(0,0,0,0.05) 10%, transparent 10%, transparent 20%, rgba(0,0,0,0.05) 20%, rgba(0,0,0,0.05) 30%, transparent 30%, transparent 40%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.05) 50%, transparent 50%, transparent 60%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0.05) 70%, transparent 70%, transparent 80%, rgba(0,0,0,0.05) 80%, rgba(0,0,0,0.05) 90%, transparent 90%),
-    linear-gradient(180deg, rgba(0,0,0,0.05) 10%, transparent 10%, transparent 20%, rgba(0,0,0,0.05) 20%, rgba(0,0,0,0.05) 30%, transparent 30%, transparent 40%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.05) 50%, transparent 50%, transparent 60%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0.05) 70%, transparent 70%, transparent 80%, rgba(0,0,0,0.05) 80%, rgba(0,0,0,0.05) 90%, transparent 90%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(249,240,234,0.9));
   border: 1px solid rgba(67, 48, 40, 0.10);
-  color: var(--text);
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55);
+  overflow: hidden;
+}
+
+.gift-qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gift-qr span {
+  display: inline-block;
+  padding: 0.35rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.8);
 }
 
 .gift-info {
