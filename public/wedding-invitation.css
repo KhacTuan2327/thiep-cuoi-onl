@@ -178,10 +178,19 @@ button, input, textarea, select { font: inherit; }
 .names {
   margin: 0;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.6rem, 6.5vw, 6.5rem);
+  font-size: clamp(1.8rem, 5vw, 6.5rem);
   line-height: 0.90;
   letter-spacing: -0.05em;
   color: #fff;
+  white-space: nowrap;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .names {
+    font-size: clamp(1.65rem, 7.2vw, 3rem);
+    letter-spacing: -0.04em;
+  }
 }
 
 .names span { color: var(--gold); }
