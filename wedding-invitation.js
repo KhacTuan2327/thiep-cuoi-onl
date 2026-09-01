@@ -12,17 +12,12 @@
   const secondsEl = document.getElementById('seconds');
   const rsvpForm = document.getElementById('rsvpForm');
   const rsvpList = document.getElementById('rsvpList');
-  const dateInput = document.getElementById('eventDateTimeInput');
-  const saveDateBtn = document.getElementById('saveDateBtn');
-  const setNowBtn = document.getElementById('setNow');
-  const editDetailsBtn = document.getElementById('editDetails');
   const musicToggle = document.getElementById('musicToggle');
   const weddingMusic = document.getElementById('weddingMusic');
 
   const STORE_KEY = 'wedding_invite_data_v1';
   const DEFAULT_EVENT = '2026-11-16T11:00';
   const CLIP_START = 0;
-  const CLIP_END = 44;
   let countdownTimer = null;
   let fallbackAudio = null;
 
@@ -46,13 +41,8 @@
     return new Date(dateValue).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
   }
 
-  function toInputLocal(date) {
-    const pad = (n) => String(n).padStart(2, '0');
-    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
-  }
-
   function updateMeta(dateValue, placeValue) {
-    const safePlace = placeValue || 'Đang cập nhật địa điểm';
+    const safePlace = placeValue || 'Xuân Lập, Thanh Hoá';
     const dateText = dateValue ? formatDate(dateValue) : '16/11/2026';
     const timeText = dateValue ? formatTime(dateValue) : '11:00';
 
@@ -60,8 +50,8 @@
     if (heroBadgeDate) heroBadgeDate.textContent = dateText;
     if (heroPlace) heroPlace.textContent = safePlace;
     if (eventPlace) eventPlace.textContent = safePlace;
-    if (eventDateEl) eventDateEl.textContent = dateText;
-    if (eventTimeEl) eventTimeEl.textContent = timeText;
+    if (eventDateEl) eventDateEl.textContent = '9h30, ' + dateText;
+    if (eventTimeEl) eventTimeEl.textContent = timeText + ', ' + dateText;
   }
 
   function startCountdown(targetDate) {
@@ -117,9 +107,12 @@
       const block = document.createElement('div');
       block.className = 'rsvp-item';
       const time = new Date(item.time).toLocaleString('vi-VN');
+      const attendanceText = item.attending === 'yes' ? '✓ Sẽ tham dự' : '✗ Không tham dự';
+      const guestsText = item.guests ? item.guests + ' người' : '';
+      
       block.innerHTML = `
         <strong>${escapeHtml(item.name)}</strong>
-        <small>${time}</small>
+        <small>${time} • ${attendanceText} ${guestsText ? '• ' + guestsText : ''}</small>
         <p>${escapeHtml(item.msg || 'Đã gửi lời chúc.')}</p>
       `;
       rsvpList.appendChild(block);
@@ -287,7 +280,6 @@
         event.preventDefault();
         const isOpen = document.body.classList.contains('page-opened');
         if (!isOpen) {
-          // Open the card: reveal content, play music
           document.body.classList.remove('page-closed');
           document.body.classList.add('page-opened');
           openInvitationBtn.textContent = 'Đóng thiệp';
@@ -301,13 +293,11 @@
             setMusicState(false);
           }
 
-          // smooth reveal scroll a bit after the animation starts
           setTimeout(function () {
             const storySection = document.getElementById('story');
             if (storySection) storySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }, 260);
         } else {
-          // Close the card: hide content and pause music
           document.body.classList.remove('page-opened');
           document.body.classList.add('page-closed');
           openInvitationBtn.textContent = 'Mở thiệp';
@@ -340,9 +330,8 @@
   function init() {
     const store = loadStore();
     const selectedDate = store.dateTime || DEFAULT_EVENT;
-    const selectedPlace = store.place || 'Đang cập nhật địa điểm';
+    const selectedPlace = store.place || 'Xuân Lập, Thanh Hoá';
 
-    if (dateInput) dateInput.value = selectedDate;
     updateMeta(selectedDate, selectedPlace);
     startCountdown(selectedDate);
 
@@ -352,55 +341,14 @@
     bindMusic();
   }
 
-  if (saveDateBtn) {
-    saveDateBtn.addEventListener('click', function () {
-      const value = dateInput ? dateInput.value : '';
-      if (!value) {
-        alert('Vui lòng chọn ngày và giờ cho sự kiện.');
-        return;
-      }
-
-      const dateObj = new Date(value);
-      if (Number.isNaN(dateObj.getTime())) {
-        alert('Ngày giờ không hợp lệ.');
-        return;
-      }
-
-      const store = loadStore();
-      store.dateTime = value;
-      saveStore(store);
-      updateMeta(value, store.place || 'Đang cập nhật địa điểm');
-      startCountdown(value);
-      alert('Đã lưu thời gian sự kiện thành công.');
-    });
-  }
-
-  if (setNowBtn) {
-    setNowBtn.addEventListener('click', function () {
-      if (dateInput) dateInput.value = toInputLocal(new Date());
-    });
-  }
-
-  if (editDetailsBtn) {
-    editDetailsBtn.addEventListener('click', function () {
-      const current = (eventPlace && eventPlace.textContent === 'Đang cập nhật địa điểm') ? '' : (eventPlace ? eventPlace.textContent : '');
-      const place = prompt('Nhập địa điểm hoặc link Google Maps:', current);
-      if (place === null) return;
-
-      const cleaned = place.trim() || 'Đang cập nhật địa điểm';
-      const store = loadStore();
-      store.place = cleaned;
-      saveStore(store);
-      updateMeta(store.dateTime || DEFAULT_EVENT, cleaned);
-    });
-  }
-
   if (rsvpForm) {
     rsvpForm.addEventListener('submit', function (event) {
       event.preventDefault();
       const name = document.getElementById('rsvpName').value.trim();
-      const email = document.getElementById('rsvpEmail').value.trim();
+      const phone = document.getElementById('rsvpPhone') ? document.getElementById('rsvpPhone').value.trim() : '';
       const msg = document.getElementById('rsvpMessage').value.trim();
+      const attending = document.querySelector('input[name="attendance"]:checked');
+      const guests = document.getElementById('rsvpGuests') ? document.getElementById('rsvpGuests').value : '2';
 
       if (!name) {
         alert('Vui lòng nhập tên của bạn.');
@@ -411,13 +359,20 @@
       store.rsvps = store.rsvps || [];
       store.rsvps.push({
         name: name,
-        email: email,
+        phone: phone,
         msg: msg,
+        attending: attending ? attending.value : 'yes',
+        guests: guests,
         time: new Date().toISOString()
       });
       saveStore(store);
       renderRsvps(store.rsvps);
       rsvpForm.reset();
+      
+      // Reset radio button
+      const firstRadio = document.querySelector('input[name="attendance"][value="yes"]');
+      if (firstRadio) firstRadio.checked = true;
+      
       alert('Cảm ơn bạn đã gửi lời chúc!');
     });
   }
