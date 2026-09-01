@@ -179,21 +179,37 @@ button, input, textarea, select { font: inherit; }
   margin: 0;
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.8rem, 5vw, 6.5rem);
-  line-height: 0.90;
-  letter-spacing: -0.05em;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   color: #fff;
-  white-space: nowrap;
   display: block;
+}
+
+.names .nm {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.names .amp {
+  display: inline-block;
+  margin: 0 0.22em;
+  color: var(--gold);
+  font-size: 0.6em;
+  vertical-align: middle;
 }
 
 @media (max-width: 480px) {
   .names {
     font-size: clamp(1.65rem, 7.2vw, 3rem);
-    letter-spacing: -0.04em;
+    letter-spacing: -0.02em;
   }
 }
 
-.names span { color: var(--gold); }
+@media (max-width: 374px) {
+  .names .amp {
+    margin: 0 0.12em;
+  }
+}
 
 .quote {
   margin-top: 16px;
@@ -1113,6 +1129,25 @@ select:focus-visible {
   }
 
   .nav-links { display: none; }
+
+  .page-opened .hero-inner {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
+    align-items: center;
+    padding: 24px 16px 28px;
+    gap: 14px;
+  }
+
+  .page-opened .hero-copy {
+    text-align: center;
+    align-items: center;
+  }
+
+  .page-opened .hero-meta,
+  .page-opened .hero-actions {
+    justify-content: center;
+  }
 
   .hero-inner {
     padding: 20px 16px 28px;
