@@ -325,55 +325,79 @@ button, input, textarea, select { font: inherit; }
 }
 
 /* Page closed / opened states */
-.page-closed .content {
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-10px);
-  overflow: hidden;
-  transition: max-height 600ms cubic-bezier(.2,.9,.2,1), opacity 380ms ease, transform 380ms ease;
+.page-closed .content,
+.page-opened .content {
+  opacity: 1;
+  transform: none;
+  transition: opacity 260ms ease;
 }
 
-.page-closed .hero {
-  border-bottom-left-radius: 24px;
-  border-bottom-right-radius: 24px;
+.page-closed .content {
+  max-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  margin-top: 0;
+  opacity: 0;
 }
 
 .page-opened .content {
   max-height: 99999px;
-  opacity: 1;
-  transform: translateY(0);
-  transition: max-height 700ms cubic-bezier(.2,.9,.2,1), opacity 480ms ease, transform 480ms ease;
+  overflow: visible;
+  visibility: visible;
+  pointer-events: auto;
 }
 
+.page-closed .hero,
 .page-opened .hero {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.page-closed .hero {
   min-height: 82vh;
   min-height: 82dvh;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
 }
 
-.page-opened .hero { min-height: auto; }
-.page-closed .topbar .nav-links { display: none; }
-.page-closed .topbar { justify-content: center; gap: 10px; }
-.page-closed .brand { font-size: 1.1rem; }
-.page-closed .music-toggle { position: absolute; right: 16px; top: 14px; }
+.page-opened .hero {
+  min-height: 82vh;
+  min-height: 82dvh;
+}
 
-.page-closed .hero-inner {
+.page-closed .topbar,
+.page-opened .topbar {
+  justify-content: center;
+  gap: 10px;
+}
+
+.page-closed .nav-links,
+.page-opened .nav-links {
+  display: none;
+}
+
+.page-closed .music-toggle,
+.page-opened .music-toggle {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+}
+
+.page-closed .hero-inner,
+.page-opened .hero-inner {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
   align-items: end;
+  width: 100%;
 }
 
-.page-closed .hero-visual { order: 0; }
-.page-closed .hero-copy { text-align: left; }
-.page-closed .hero-meta { justify-content: flex-start; }
-.page-closed .hero-actions { justify-content: flex-start; }
+.page-closed .hero-visual,
+.page-opened .hero-visual { order: 0; }
+.page-closed .hero-copy,
+.page-opened .hero-copy { text-align: left; }
+.page-closed .hero-meta,
+.page-opened .hero-meta { justify-content: flex-start; }
+.page-closed .hero-actions,
+.page-opened .hero-actions { justify-content: flex-start; }
 
 /* ===========================
    CARDS
