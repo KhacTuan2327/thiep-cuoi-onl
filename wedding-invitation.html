@@ -19,12 +19,6 @@
       <div class="hero-overlay"></div>
       <nav class="topbar">
         <div class="nav-actions">
-          <div class="nav-links">
-            <a href="#story">Gia đình</a>
-            <a href="#event">Sự kiện</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#rsvp">RSVP</a>
-          </div>
           <button id="musicToggle" class="music-toggle" type="button" aria-label="Bật nhạc nền">♫</button>
         </div>
       </nav>
@@ -41,7 +35,7 @@
         </div>
 
         <div class="hero-copy reveal">
-          <h1 class="names display">Khắc Tuấn <span>&amp;</span> Duyên Anh</h1>
+          <h1 class="names display"><span class="nm">Khắc Tuấn</span><span class="amp">&amp;</span><span class="nm">Duyên Anh</span></h1>
 
           <p class="eyebrow">Trân trọng kính mời</p>
 
@@ -98,7 +92,7 @@
           </article>
           <article class="story-card accent">
             <span class="tag">Nhà gái</span>
-            <h3>Đỗ Duyên Anh</h3>
+            <h3>Đỗ Thị Duyên Anh</h3>
             <div class="family-info">
               <div class="parent-row">
                 <span class="parent-label">Bố:</span>
@@ -127,8 +121,8 @@
           <div class="timeline-item highlight">
             <span class="dot"></span>
             <div>
-              <strong>Lễ Ăn hỏi (Nạp tài)</strong>
-              <p class="event-detail">9h30 thứ Bảy, ngày 14/11/2026</p>
+              <strong>Lễ Ăn hỏi</strong>
+              <p class="event-detail">Vào lúc: 9h30 thứ Bảy, ngày 14/11/2026</p>
               <p class="event-lunar">(Tức ngày 6 tháng 10 năm Bính Ngọ)</p>
               <p class="event-location">Tại nhà gái: Thôn Trung Lập, xã Xuân Lập, tỉnh Thanh Hoá</p>
             </div>
@@ -137,7 +131,7 @@
             <span class="dot"></span>
             <div>
               <strong>Lễ Thành hôn</strong>
-              <p class="event-detail">11h thứ Hai, ngày 16/11/2026</p>
+              <p class="event-detail">Vào lúc: 11h thứ Hai, ngày 16/11/2026</p>
               <p class="event-lunar">(Tức ngày 8 tháng 10 năm Bính Ngọ)</p>
               <p class="event-location">Tại nhà trai: Thôn Phong Lai, xã Xuân Lập, tỉnh Thanh Hoá</p>
             </div>
@@ -178,6 +172,70 @@
           <div class="event-box">
             <span class="event-label">Địa điểm</span>
             <strong id="eventPlace">Xuân Lập, Thanh Hoá</strong>
+          </div>
+        </div>
+
+        <div class="venue-grid">
+          <article class="venue-card venue-card--bride">
+            <div class="venue-card__top">
+              <div>
+                <span class="venue-tag">Nhà gái</span>
+                <h3>Thôn Trung Lập</h3>
+              </div>
+              <span class="venue-badge">Lễ ăn hỏi</span>
+            </div>
+            <p class="venue-address">Thôn Trung Lập, xã Xuân Lập, tỉnh Thanh Hoá</p>
+            <div class="venue-meta">
+              <span>9h30</span>
+              <span>14/11/2026</span>
+            </div>
+          </article>
+
+          <article class="venue-card venue-card--groom">
+            <div class="venue-card__top">
+              <div>
+                <span class="venue-tag">Nhà trai</span>
+                <h3>Thôn Phong Lai</h3>
+              </div>
+              <span class="venue-badge">Lễ thành hôn</span>
+            </div>
+            <p class="venue-address">Thôn Phong Lai, xã Xuân Lập, tỉnh Thanh Hoá</p>
+            <div class="venue-meta">
+              <span>11:00</span>
+              <span>16/11/2026</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="location-map-card">
+          <div class="location-map-header">
+            <p class="eyebrow">Địa điểm</p>
+            <h3>Nhà chú rể</h3>
+          </div>
+
+          <div class="location-map-body">
+            <div class="map-frame map-frame--compact">
+              <iframe
+                title="Bản đồ nhà chú rể"
+                src="https://www.google.com/maps?q=Th%C3%B4n%20Phong%20Lai%2C%20x%C3%A3%20Xu%C3%A2n%20L%E1%BA%ADp%2C%20Thanh%20H%C3%B3a&z=14&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+              </iframe>
+            </div>
+
+            <div class="map-info">
+              <div class="map-info__row">
+                <span class="map-label">Địa chỉ</span>
+                <strong>Thôn Phong Lai</strong>
+              </div>
+              <p class="map-address">Xã Xuân Lập, tỉnh Thanh Hoá</p>
+              <div class="map-meta">
+                <span>11:00</span>
+                <span>16/11/2026</span>
+              </div>
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Th%C3%B4n+Phong+Lai%2C+x%C3%A3+Xu%C3%A2n+L%E1%BA%ADp%2C+Thanh+Ho%C3%A1" target="_blank" rel="noreferrer">Mở bản đồ</a>
+            </div>
           </div>
         </div>
       </section>
